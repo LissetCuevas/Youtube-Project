@@ -1,23 +1,23 @@
-import * as Styled from './Header.styled';
+import { MainHeader, NavList, IconButton, Link, SearchWrapper } from './Header.styled';
 
 function Header() {
   return (
-    <Styled.Header>
-      <Styled.NavList>
-        <Styled.IconButton onClick={() => {}}>
+    <MainHeader>
+      <NavList>
+        <IconButton onClick={() => {}}>
           <img src="/images/icons/dark_mode.svg" alt="search" height="25px"/>
-        </Styled.IconButton>
-        <Styled.Link href="/">Home</Styled.Link>
-        <Styled.Link href="/">Login</Styled.Link>
-      </Styled.NavList>
+        </IconButton>
+        <Link href="/">Home</Link>
+        <Link href="/">Login</Link>
+      </NavList>
       
-      <Styled.SearchWrapper>
+      <SearchWrapper>
           <input type="text"/>
-          <Styled.IconButton onClick={() => {}}>
+          <IconButton onClick={() => {}}>
             <img src="/images/icons/search.svg" alt="search" height="25px"/>
-          </Styled.IconButton>
-        </Styled.SearchWrapper>
-    </Styled.Header>
+          </IconButton>
+        </SearchWrapper>
+    </MainHeader>
   );
 };
 

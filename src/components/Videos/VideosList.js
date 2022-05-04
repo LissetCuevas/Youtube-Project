@@ -1,13 +1,13 @@
 import VideoCard from './VideoCard';
-import * as Styled from './VideosList.styled';
+import { List } from './VideosList.styled';
 
 function VideoList({videos}) {
   return(
-    <Styled.List>
+    <List>
       {videos.map( video => 
         <VideoCard key={video.etag} data={video.snippet}/>
       )}
-    </Styled.List>
+    </List>
   );
 };
 

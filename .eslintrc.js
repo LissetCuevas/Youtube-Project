@@ -1,7 +1,7 @@
 module.exports = {
     "extends": [
         "react-app",
-        "react-app/jest"
+        "react-app/jest",
       ],
       "rules": {
         "comma-dangle": [
@@ -11,24 +11,24 @@ module.exports = {
             "exports": "always-multiline",
             "functions": "never",
             "imports": "always-multiline",
-            "objects": "always-multiline"
-          }
+            "objects": "always-multiline",
+          },
         ],
         "max-len": [
           "error",
           {
-            "code": 100
-          }
+            "code": 100,
+          },
         ],
         "eqeqeq": [
           "error",
           "always",
           {
-            "null": "ignore"
-          }
+            "null": "ignore",
+          },
         ],
         "no-await-in-loop": [
-          "error"
+          "error",
         ],
         "no-param-reassign": "error",
         "react/self-closing-comp": "error",
@@ -38,10 +38,10 @@ module.exports = {
           "error",
           "always",
           {
-            "exceptAfterSingleLine": true
-          }
+            "exceptAfterSingleLine": true,
+          },
         ],
         "no-sparse-arrays": 0,
-        "curly": "error"
-      }
+        "curly": "error",
+      },
 }

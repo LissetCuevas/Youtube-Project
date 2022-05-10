@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const MainHeader = styled.header`
   background-color: #CC0066;
@@ -13,8 +14,7 @@ export const NavList = styled.div`
   align-items: center;
 `
 
-export const Link = styled.a`
-  background: transparent;
+export const StyledLink = styled(Link)`
   text-decoration: none;
   color: #FFF;
   margin: 0px 10px;

@@ -1,13 +1,13 @@
 import VideoCard from '../components/Videos/VideoCard';
 import { List, SearchWrapper, IconButton } from './VideosList.styled';
-import { useHTTP } from '../hooks/use-HTTP';
+import { useFetch } from '../hooks/useFetch';
 import { useRef, useState } from 'react';
 
 function VideoList() {
   const [search, setSearch] = useState('');
   const searchInput = useRef('');
   
-  const {isLoading, data , error} = useHTTP(
+  const {isLoading, data , error} = useFetch(
     'https://www.googleapis.com/youtube/v3/search?' + 
     new URLSearchParams({
       part: [

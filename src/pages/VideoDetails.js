@@ -1,13 +1,13 @@
 import { useParams } from 'react-router-dom';
 import RelatedVideos from '../components/Videos/RelatedVideos';
 import VideoInfo from '../components/Videos/VideoInfo';
-import { useHTTP } from '../hooks/use-HTTP';
+import { useFetch } from '../hooks/useFetch';
 import { Details, Main } from './VideoDetails.styled';
 
 function VideoDetails() {
   const params = useParams();
 
-  const {isLoading, data, error} = useHTTP(
+  const {isLoading, data, error} = useFetch(
     'https://www.googleapis.com/youtube/v3/videos?' + 
     new URLSearchParams({
       part: [

@@ -1,8 +1,8 @@
-import { useHTTP } from '../../hooks/use-HTTP';
+import { useFetch } from '../../hooks/useFetch';
 import VideoCard from './VideoCard';
 
 function RelatedVideos({id}) {
-  const {isLoading, data, error} = useHTTP(
+  const {isLoading, data, error} = useFetch(
     'https://www.googleapis.com/youtube/v3/search?' + 
     new URLSearchParams({
       relatedToVideoId: id,
@@ -26,7 +26,6 @@ function RelatedVideos({id}) {
     video.hasOwnProperty('snippet')
   );
   
-  console.log(data);
   return(
     <div>
       <h3>Related Videos</h3>

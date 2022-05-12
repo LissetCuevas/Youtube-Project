@@ -5,7 +5,7 @@ function Header() {
     <MainHeader>
       <NavList>
         <IconButton onClick={() => {}}>
-          <img src="/images/icons/dark_mode.svg" alt="search" height="25px"/>
+          <img src="/assets/icons/dark_mode.svg" alt="search" height="25px"/>
         </IconButton>
         <StyledLink to='/'>Home</StyledLink>
         <StyledLink to='/'>Login</StyledLink>

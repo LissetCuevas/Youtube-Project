@@ -20,19 +20,19 @@ function VideoInfo({snippet, statistics}) {
         </div>
         <Interactions>
           <LikeButton>
-            <img src="/images/icons/favorite.svg" alt="like"/>
+            <img src="/assets/icons/favorite.svg" alt="like"/>
             Like
           </LikeButton>
           <TextWithIcon>
-            <img src="/images/icons/visibility.svg" alt="views"/>
+            <img src="/assets/icons/visibility.svg" alt="views"/>
             {viewCount}
           </TextWithIcon>
           <TextWithIcon>
-            <img src="/images/icons/favorite.svg" alt="favorites"/>
+            <img src="/assets/icons/favorite.svg" alt="favorites"/>
             {likeCount}
           </TextWithIcon>
           <TextWithIcon>
-            <img src="/images/icons/comment.svg" alt="comments"/>
+            <img src="/assets/icons/comment.svg" alt="comments"/>
             {commentCount}
           </TextWithIcon>
           <p>{publishedAt.substring(0,  publishedAt.indexOf('T'))}</p>

@@ -1,4 +1,5 @@
 import { useFetch } from '../../hooks/useFetch';
+import LoadingSpinner from '../Helpers/LoadingSpiner';
 import VideoCard from './VideoCard';
 
 function RelatedVideos({id}) {
@@ -15,7 +16,7 @@ function RelatedVideos({id}) {
   }));
   
   if (isLoading) {
-    return <div>loading..</div>;
+    return <LoadingSpinner/>;
   }
   
   if (error) {

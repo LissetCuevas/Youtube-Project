@@ -2,6 +2,7 @@ import VideoCard from '../components/Videos/VideoCard';
 import { List, SearchWrapper, IconButton } from './VideosList.styled';
 import { useFetch } from '../hooks/useFetch';
 import { useRef, useState } from 'react';
+import LoadingSpinner from '../components/Helpers/LoadingSpiner';
 
 function VideoList() {
   const [search, setSearch] = useState('');
@@ -28,7 +29,7 @@ function VideoList() {
   }
   
   if (isLoading) {
-    return <div>loading..</div>
+    return <LoadingSpinner />
   }
   
   if (error) {
@@ -49,6 +50,7 @@ function VideoList() {
       )}
     </List>
     </div>
+    // <LoadingSpinner />
   );
 };
 

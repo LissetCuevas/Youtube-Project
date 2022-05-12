@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import LoadingSpinner from '../components/Helpers/LoadingSpiner';
 import RelatedVideos from '../components/Videos/RelatedVideos';
 import VideoInfo from '../components/Videos/VideoInfo';
 import { useFetch } from '../hooks/useFetch';
@@ -22,7 +23,7 @@ function VideoDetails() {
   }));
   
   if (isLoading) {
-    return <div>loading..</div>;
+    return <LoadingSpinner/>;
   }
   
   if (error) {

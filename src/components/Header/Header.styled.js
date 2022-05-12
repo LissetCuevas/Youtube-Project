@@ -34,7 +34,7 @@ export const IconButton = styled.button`
     filter: invert(0.6);
   }
 `
-export const SearchWrapper = styled.div`
+export const SearchWrapper = styled.form`
   display: flex;
   align-items: center;
   input, textarea{

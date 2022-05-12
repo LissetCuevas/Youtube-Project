@@ -37,9 +37,9 @@ function VideoList() {
   
   return(
     <div>
-      <SearchWrapper>
+      <SearchWrapper onSubmit={handleSearch}>
         <input ref={searchInput} type="text"/>
-        <IconButton onClick={handleSearch}>
+        <IconButton type="submit">
           <img src="/assets/icons/search.svg" alt="search" height="25px"/>
         </IconButton>
       </SearchWrapper>

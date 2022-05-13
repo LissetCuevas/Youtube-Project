@@ -3,24 +3,27 @@ import Header from './components/Header/Header';
 import VideosList from './pages/VideosList';
 import './App.css';
 import VideoDetails from './pages/VideoDetails';
-import SearchContext from './store/searchContext';
+import GlobalContext from './store/GlobalContext';
 import { useState } from 'react';
+import NotFound from './pages/NotFound';
 
 function App() {
   const [search, setSearch] = useState('cat');
+  const [darkMode, setDarkMode] = useState(false);
   
   return (
-    <SearchContext.Provider value={{search, setSearch}}>
+    <GlobalContext.Provider value={{search, setSearch, darkMode, setDarkMode}}>
       <BrowserRouter>
         <Header/>
-        <main>
+        <main className={darkMode ? "dark" : "light" }>
           <Routes>
-            <Route exact path='/video/:id' element={ <VideoDetails />} />
-            <Route exact path='/' element={<VideosList />}/>
+            <Route path='*' element={<NotFound />} />
+            <Route path='/video/:id' element={ <VideoDetails />} />
+            <Route path='/' element={<VideosList />}/>
           </Routes>
         </main>
       </BrowserRouter>
-    </SearchContext.Provider>
+    </GlobalContext.Provider>
   );
 }
 

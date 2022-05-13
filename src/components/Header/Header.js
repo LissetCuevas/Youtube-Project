@@ -1,10 +1,10 @@
 import { useRef, useContext } from 'react';
-import SearchContext from '../../store/searchContext';
+import GlobalContext from '../../store/GlobalContext';
 import { MainHeader, NavList, IconButton, StyledLink, SearchWrapper } from './Header.styled';
 import { useNavigate } from 'react-router-dom';
 
 function Header() {
-  const { setSearch }  = useContext(SearchContext);
+  const { setSearch, darkMode, setDarkMode }  = useContext(GlobalContext);
   const searchInput = useRef('');
   const navigate = useNavigate();
   
@@ -14,11 +14,20 @@ function Header() {
     navigate("/");
   }
   
+  const handleClick = (e) => {
+    e.preventDefault();
+    setDarkMode(darkMode ? false : true);
+  }
+  
   return (
     <MainHeader>
       <NavList>
-        <IconButton onClick={() => {}}>
-          <img src="/assets/icons/dark_mode.svg" alt="search" height="25px"/>
+        <IconButton onClick={handleClick}>
+          <img 
+            src={darkMode ? "/assets/icons/light_mode.svg" : "/assets/icons/dark_mode.svg"}
+            alt={darkMode ? "lightMode" : "darkMode"}
+            height="25px"
+          />
         </IconButton>
         <StyledLink to='/'>Home</StyledLink>
         <StyledLink to='/'>Login</StyledLink>

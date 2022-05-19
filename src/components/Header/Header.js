@@ -4,13 +4,13 @@ import { MainHeader, NavList, IconButton, StyledLink, SearchWrapper } from './He
 import { useNavigate } from 'react-router-dom';
 
 function Header() {
-  const { setSearch, darkMode, setDarkMode }  = useContext(GlobalContext);
+  const { setWordSearched, darkMode, setDarkMode }  = useContext(GlobalContext);
   const searchInput = useRef('');
   const navigate = useNavigate();
   
   const handleSearch = (e) => {
     e.preventDefault();
-    setSearch(searchInput.current.value);
+    setWordSearched(searchInput.current.value);
     navigate("/");
   }
   

@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 const GlobalContext = createContext({
-  search: '',
-  setSearch: () => {},
+  wordSearched: '',
+  setWordSearched: () => {},
   darkMode: false,
   setDarkMode: () => {},
 });

@@ -7,7 +7,7 @@ import LoadingSpinner from '../components/Helpers/LoadingSpiner';
 import Error from '../components/Helpers/Error';
 
 function VideoList() {
-  const {search} = useContext(GlobalContext);
+  const { wordSearched } = useContext(GlobalContext);
   
   const {isLoading, data , error} = useFetch(
     'https://www.googleapis.com/youtube/v3/search?' + 
@@ -16,7 +16,7 @@ function VideoList() {
         "snippet",
         "id",
       ],
-      q: search,
+      q: wordSearched,
       type: "video",
       chart: "mostPopular",
       maxResults: 50,

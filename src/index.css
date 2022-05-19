@@ -1,4 +1,9 @@
+html{
+  height: 100%;
+}
+
 body {
   margin: 0px;
   font-family: sans-serif;
+  background-color: #f688cc;
 }

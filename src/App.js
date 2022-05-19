@@ -1,20 +1,18 @@
-import { Routes, Route } from 'react-router-dom';
-import Header from './components/Header/Header';
-import VideosList from './pages/VideosList';
 import './App.css';
-import VideoDetails from './pages/VideoDetails';
+import GlobalContext from './store/GlobalContext';
+import { useState } from 'react';
+import { AppRouter } from './routers/AppRouter';
 
 function App() {
+  const [wordSearched, setWordSearched] = useState('cat');
+  const [darkMode, setDarkMode] = useState(false);
+  
   return (
-    <>
-      <Header/>
-      <main>
-        <Routes>
-          <Route path='/' element={<VideosList />} />
-          <Route path='/video/:id' element={ <VideoDetails />} />
-        </Routes>
-      </main>
-    </>
+    <GlobalContext.Provider value={{wordSearched, setWordSearched, darkMode, setDarkMode}}>
+      <div className={darkMode ? "dark" : "light" }>
+        <AppRouter/>
+      </div>
+    </GlobalContext.Provider>
   );
 }
 

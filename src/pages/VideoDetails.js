@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import Error from '../components/Helpers/Error';
 import LoadingSpinner from '../components/Helpers/LoadingSpiner';
 import RelatedVideos from '../components/Videos/RelatedVideos';
 import VideoInfo from '../components/Videos/VideoInfo';
@@ -27,7 +28,7 @@ function VideoDetails() {
   }
   
   if (error) {
-    return <div>Error: {error}</div>;
+    return <Error message={error.message}/>
   }
   
   const videoData = data.items[0];

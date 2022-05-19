@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const MainHeader = styled.header`
-  background-color: #CC0066;
+  background-color: #a9017e;
   display: flex;
   justify-content: space-between;
   padding: 10px 40px;
@@ -34,7 +34,7 @@ export const IconButton = styled.button`
     filter: invert(0.6);
   }
 `
-export const SearchWrapper = styled.div`
+export const SearchWrapper = styled.form`
   display: flex;
   align-items: center;
   input, textarea{

@@ -13,15 +13,13 @@ export const useFetch = (url) => {
       
       try {
         const response = await fetch(url);
-        
-        if (!response.ok) {
-          throw new Error('Request failed!');
-        }
-        
         const result = await response.json();
+        if (!response.ok) {
+          throw new Error(result.error.message);
+        }
         setData(result);
-      } catch(error) {
-        setError(error);
+      } catch(errorMessage) {
+        setError(errorMessage);
       }
       setIsLoading(false);
     };

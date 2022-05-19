@@ -1,12 +1,13 @@
 import VideoCard from '../components/Videos/VideoCard';
-import { List, SearchWrapper, IconButton } from './VideosList.styled';
+import { List } from './VideosList.styled';
 import { useFetch } from '../hooks/useFetch';
-import { useRef, useState } from 'react';
+import { useContext } from 'react';
+import GlobalContext from '../store/GlobalContext';
 import LoadingSpinner from '../components/Helpers/LoadingSpiner';
+import Error from '../components/Helpers/Error';
 
 function VideoList() {
-  const [search, setSearch] = useState('');
-  const searchInput = useRef('');
+  const { wordSearched } = useContext(GlobalContext);
   
   const {isLoading, data , error} = useFetch(
     'https://www.googleapis.com/youtube/v3/search?' + 
@@ -15,7 +16,7 @@ function VideoList() {
         "snippet",
         "id",
       ],
-      q: search,
+      q: wordSearched,
       type: "video",
       chart: "mostPopular",
       maxResults: 50,
@@ -23,34 +24,22 @@ function VideoList() {
     })
   );
   
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearch(searchInput.current.value);
-  }
-  
   if (isLoading) {
     return <LoadingSpinner />
   }
   
   if (error) {
-    return <div>Error: {error}</div>
+    return <Error message={error.message}/>
   }
   
   return(
     <div>
-      <SearchWrapper onSubmit={handleSearch}>
-        <input ref={searchInput} type="text"/>
-        <IconButton type="submit">
-          <img src="/assets/icons/search.svg" alt="search" height="25px"/>
-        </IconButton>
-      </SearchWrapper>
       <List>
-      {data.items.map( video => 
-        <VideoCard key={video.etag} data={video.snippet} id={video.id.videoId}/>
-      )}
-    </List>
+        {data.items.map( video => 
+          <VideoCard key={video.etag} data={video.snippet} id={video.id.videoId}/>
+        )}
+      </List>
     </div>
-    // <LoadingSpinner />
   );
 };
 

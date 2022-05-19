@@ -1,4 +1,5 @@
 import { useFetch } from '../../hooks/useFetch';
+import Error from '../Helpers/Error';
 import LoadingSpinner from '../Helpers/LoadingSpiner';
 import VideoCard from './VideoCard';
 
@@ -20,7 +21,7 @@ function RelatedVideos({id}) {
   }
   
   if (error) {
-    return <div>Error: {error}</div>;
+    return <Error message={error.message}/>
   }
   
   const relatedVideos = data.items.filter(video => 

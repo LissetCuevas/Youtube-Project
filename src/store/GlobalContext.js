@@ -5,6 +5,9 @@ const GlobalContext = createContext({
   setWordSearched: () => {},
   darkMode: false,
   setDarkMode: () => {},
+  user: null,
+  setUser: () => {},
+  logout: () => {},
 });
 
 export default GlobalContext;

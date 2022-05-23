@@ -24,6 +24,20 @@ export const StyledLink = styled(Link)`
     text-decoration: underline;
   }
 `
+
+export const StyledButton = styled.button`
+  background-color: transparent;
+  border: none;
+  font-size: medium;
+  color: #FFF;
+  margin: 0px 10px;
+  &:hover{
+    font-weight: 700;
+    font-size: medium;
+    text-decoration: underline;
+  }
+`
+
 export const IconButton = styled.button`
   background: transparent;
   text-decoration: none;

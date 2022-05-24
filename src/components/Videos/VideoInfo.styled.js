@@ -26,7 +26,7 @@ export const LikeButton = styled.button`
   color: white;
   display: flex;
   align-items: center;
-  background: #5b9cf7;
+  background: ${props => props.favorite ? '#5b9cf7' : '#CC00AA'};
   border: none;
   border-radius: 5px;
   padding: 7px 17px;
@@ -38,7 +38,7 @@ export const LikeButton = styled.button`
   }
   
   &:hover{
-    background: #CC00AA;
+    background: ${props => props.favorite ? '#CC00AA' : '#5b9cf7'};
   }
 `
 

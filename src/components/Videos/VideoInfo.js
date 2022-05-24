@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import GlobalContext from "../../store/GlobalContext";
 import { 
   FlexDiv, 
   Interactions, 
@@ -6,9 +9,30 @@ import {
   TextWithLineSpaces,
 } from "./VideoInfo.styled";
 
-function VideoInfo({snippet, statistics}) {
+function VideoInfo({snippet, statistics, id}) {
+  const { favorites, setFavorites, user } = useContext(GlobalContext);
+  const navigate = useNavigate();
   const {title, publishedAt, channelTitle, description } = snippet;
   const {viewCount, likeCount, commentCount} = statistics;
+ 
+  const videoIsFavorite = (id) => favorites.some(video => video.id === id);
+  const removeVideo = (id) => favorites.filter((video) => video.id !== id);
+  
+  const saveFavoriteVideo = () => {
+    if (!user) { 
+      navigate("/login");
+      return;
+    }
+    
+    if (videoIsFavorite(id)) {
+      setFavorites(removeVideo(id));
+    } else {
+      const video = {snippet, statistics, id};
+      setFavorites([...favorites, video]);
+    }
+    
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
   
   return (
     <div>
@@ -19,9 +43,9 @@ function VideoInfo({snippet, statistics}) {
           <TextWithLineSpaces>{description}</TextWithLineSpaces>
         </div>
         <Interactions>
-          <LikeButton>
+          <LikeButton onClick={saveFavoriteVideo} favorite={videoIsFavorite(id)}>
             <img src="/assets/icons/favorite.svg" alt="like"/>
-            Like
+            {videoIsFavorite(id) ? 'Liked' : 'Like'}
           </LikeButton>
           <TextWithIcon>
             <img src="/assets/icons/visibility.svg" alt="views"/>
@@ -29,7 +53,7 @@ function VideoInfo({snippet, statistics}) {
           </TextWithIcon>
           <TextWithIcon>
             <img src="/assets/icons/favorite.svg" alt="favorites"/>
-            {likeCount}
+            {videoIsFavorite(id) ? parseInt(likeCount)+1 : likeCount}
           </TextWithIcon>
           <TextWithIcon>
             <img src="/assets/icons/comment.svg" alt="comments"/>

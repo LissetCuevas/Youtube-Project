@@ -8,6 +8,8 @@ const GlobalContext = createContext({
   user: null,
   setUser: () => {},
   logout: () => {},
+  favorites: [],
+  setFavorites: () => {},
 });
 
 export default GlobalContext;

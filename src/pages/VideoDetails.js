@@ -1,12 +1,13 @@
 import { useParams } from 'react-router-dom';
 import Error from '../components/Helpers/Error';
 import LoadingSpinner from '../components/Helpers/LoadingSpiner';
+import MoreFavorites from '../components/Videos/MoreFavorites';
 import RelatedVideos from '../components/Videos/RelatedVideos';
 import VideoInfo from '../components/Videos/VideoInfo';
 import { useFetch } from '../hooks/useFetch';
 import { Details, Main } from './VideoDetails.styled';
 
-function VideoDetails() {
+function VideoDetails({favorite}) {
   const params = useParams();
 
   const {isLoading, data, error} = useFetch(
@@ -37,9 +38,13 @@ function VideoDetails() {
     <Main>
       <Details>
         <div dangerouslySetInnerHTML={{__html: videoData.player.embedHtml}}/>
-        <VideoInfo snippet={videoData.snippet} statistics={videoData.statistics} />
+        <VideoInfo snippet={videoData.snippet} statistics={videoData.statistics} id={params.id}/>
       </Details>
-      <RelatedVideos id={params.id}/>
+      {favorite 
+        ? <MoreFavorites id={params.id}/>
+        : <RelatedVideos id={params.id}/>
+      }
+      
     </Main>
   );
 }

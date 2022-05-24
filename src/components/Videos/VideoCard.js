@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
 import { Card, Title, FlexDiv } from './VideoCard.styled';
 
-function VideoCard({data, id}) {
+function VideoCard({data, id, fav}) {
   const {title, publishedAt, channelTitle, thumbnails} = data;
 
   return (
     <Card>
       <img src={thumbnails.medium.url} alt={title}/>
       <Title>
-        <Link to={`/video/${id}`}>{title}</Link>
+        <Link to={fav ? `/favorite/${id}` : `/video/${id}`}>
+          {title}
+        </Link>
       </Title>
       <FlexDiv>
         <p>{channelTitle}</p>

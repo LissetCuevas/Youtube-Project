@@ -37,8 +37,11 @@ function Header() {
           />
         </IconButton>
         <StyledLink to='/'>Home</StyledLink>
-        { user ?
-          <StyledButton onClick={logout}>Logout</StyledButton>
+        { user ? 
+          <>
+            <StyledLink to='/favorites'>Favorites</StyledLink>
+            <StyledButton onClick={logout}>Logout</StyledButton>
+          </>
           : <StyledLink to='/login'>Login</StyledLink>
         }
         
